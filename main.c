@@ -16,8 +16,7 @@
 //}
 
 int main() {
-//    print_numbers(3, 1, 2);
-    AND *and = and_constructor(10, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+    AND *and = and_constructor(10, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1);
     for(int i = 0; i < 1000; ++i) {
         printf("%d", and->out.signal);
     }

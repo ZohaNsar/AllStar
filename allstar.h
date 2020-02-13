@@ -18,4 +18,4 @@ typedef struct{
 
 //functions
 AND *and_constructor(int num, ...);
-void *and_run(void *args);
+void and_run(AND *args);

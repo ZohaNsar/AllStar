@@ -10,18 +10,15 @@ AND *and_constructor(int num, ...){
     }
     temp->out.signal = LOW;
 
-    pthread_create(&(temp->thread), NULL, and_run, temp);
-
+    and_run(temp);
     return temp;
 }
 
-void *and_run(void *args) {
-    AND *gp = (AND *) args;
-    while(1) {
+void and_run(AND *gp) {
         gp->out.signal = HIGH;
         for(int i = 0; i < gp->inputN; ++i) {
             gp->out.signal = gp->out.signal & gp->in[i].signal;
         }
-    }
+
 }
 
