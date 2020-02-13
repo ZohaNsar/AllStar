@@ -6,7 +6,7 @@ AND *and_constructor(int num, ...){
 
     temp->inputN = num;
     for(int i = 0; i < num; ++i){
-        temp->in[i].signal = va_arg(args, int);
+        temp->in[i].signal = va_arg(args, Wire).signal;
     }
     temp->out.signal = LOW;
 
