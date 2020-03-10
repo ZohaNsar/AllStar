@@ -5,51 +5,50 @@
 #include <pthread.h>
 #include <stdlib.h>
 #include <stdbool.h>
-;;;;;;;;;;;;;;;;;;;
+
 #define BUSIZE 32
 #define HIGH 1
 #define LOW 0
-//#define Wire wire
-;;;;;;;;;;;;;;;;;;;;
+
 
 typedef struct {
     unsigned char signal : 1;
-} Wire;
+} WIRE;
 
 typedef struct {
-    Wire *in;
-    Wire *out;
+    WIRE *in;
+    WIRE *out;
 } NOT;
 
 typedef struct {
     int inputN;
-    Wire *in[BUSIZE];
-    Wire *out;
+    WIRE *in[BUSIZE];
+    WIRE *out;
 } AND;
 
 typedef struct {
     int inputN;
-    Wire *in[BUSIZE];
-    Wire *out;
+    WIRE *in[BUSIZE];
+    WIRE *out;
 } OR;
 
 typedef struct {
     long int delay;
     pthread_t thread_id;
     pthread_cond_t condition;
-} CLOCK; 
+} CLOCK;
 
 typedef struct {
   CLOCK clock;
-  Wire *d;
-  Wire *q;
-  Wire *qp;
+  WIRE *d;
+  WIRE *q;
+  WIRE *qp;
 } D_FLIPFLOP;
 
 //functions
-Wire *wire_create(int signal);
+WIRE *wire_create(int signal);
 
-NOT *not_create(Wire *in);
+NOT *not_create(WIRE *in);
 
 AND *and_constructor(int num, ...);
 void and_run(AND *args);
@@ -60,6 +59,5 @@ void or_run(OR *args);
 CLOCK *clock_constructor(long int delay);
 void *run_clock(void *args);
 
-D_FLIPFLOP *df_constructor(CLOCK clock, Wire *d, Wire *q, Wire *qp);
+D_FLIPFLOP *df_constructor(CLOCK clock, WIRE *d, WIRE *q, WIRE *qp);
 void *df_run(void *args);
-

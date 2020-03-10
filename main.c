@@ -25,11 +25,11 @@ int main() {
 //    puts("hihi");
 //    pthread_mutex_unlock(&lock);
 //    puts("hi");
-    Wire *a = wire_create(HIGH);
-    Wire *b = wire_create(HIGH);
-    Wire *c = wire_create(HIGH);
-    Wire *d = wire_create(HIGH);
-    Wire *e = wire_create(HIGH);
+    WIRE *a = wire_create(HIGH);
+    WIRE *b = wire_create(HIGH);
+    WIRE *c = wire_create(HIGH);
+    WIRE *d = wire_create(HIGH);
+    WIRE *e = wire_create(HIGH);
 
     AND *and0 = and_constructor(3, a, b, c);
     d = and0->out;

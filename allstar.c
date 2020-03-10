@@ -3,13 +3,13 @@
 
 pthread_cond_t cond0 = PTHREAD_COND_INITIALIZER;
 
-Wire *wire_create(int signal){
-    Wire *temp = (Wire *) malloc(sizeof(Wire));
+WIRE *wire_create(int signal){
+    WIRE *temp = (WIRE *) malloc(sizeof(WIRE));
     temp->signal = signal;
     return temp;
 }
 
-NOT *not_create(Wire *in){
+NOT *not_create(WIRE *in){
     NOT *temp = (NOT *) malloc(sizeof((NOT)));
     temp->in = in;
     temp->out = wire_create(!(temp->in->signal));
@@ -25,7 +25,7 @@ AND *and_constructor(int num, ...) {
     temp->inputN = num;
     for(int i = 0; i < num; ++i){
         temp->in[i] = wire_create(LOW);
-        temp->in[i]->signal = va_arg(args, Wire *)->signal;
+        temp->in[i]->signal = va_arg(args, WIRE *)->signal;
     }
     temp->out = wire_create(LOW);
 
@@ -49,7 +49,7 @@ OR *or_create(int num, ...){
     temp->inputN = num;
     for(int i = 0; i < num; ++i){
         temp->in[i] = wire_create(LOW);
-        temp->in[i]->signal = va_arg(args, Wire *)->signal;
+        temp->in[i]->signal = va_arg(args, WIRE *)->signal;
     }
     temp->out = wire_create(LOW);
 
@@ -83,7 +83,7 @@ void *run_clock(void *args){
     }
 }
 
-D_FLIPFLOP *df_constructor(CLOCK clock, Wire *d, Wire *q, Wire *qp) {
+D_FLIPFLOP *df_constructor(CLOCK clock, WIRE *d, WIRE *q, WIRE *qp) {
     D_FLIPFLOP *temp = (D_FLIPFLOP *) malloc(sizeof(D_FLIPFLOP));
     temp->d = wire_create(LOW);
     temp->q = wire_create(LOW);
