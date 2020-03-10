@@ -10,7 +10,7 @@ WIRE *wire_create(int signal){
 }
 
 NOT *not_create(WIRE *in){
-    NOT *temp = (NOT *) malloc(sizeof((NOT)));
+    NOT *temp = (NOT *) malloc(sizeof(NOT));
     temp->in = in;
     temp->out = wire_create(!(temp->in->signal));
     return temp;
@@ -57,7 +57,7 @@ OR *or_create(int num, ...){
     return temp;
 }
 
-void or_update(OR *args){
+void or_update(OR *gp){
     gp->out = wire_create(HIGH);
     for(int i = 0; i < gp->inputN; ++i) {
         gp->out->signal = gp->out->signal | gp->in[i]->signal;

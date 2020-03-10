@@ -51,10 +51,10 @@ WIRE *wire_create(int signal);
 NOT *not_create(WIRE *in);
 
 AND *and_constructor(int num, ...);
-void and_run(AND *args);
+void and_run(AND *gp);
 
 OR *or_create(int num, ...);
-void or_run(OR *args);
+void or_update(OR *gp);
 
 CLOCK *clock_constructor(long int delay);
 void *run_clock(void *args);
