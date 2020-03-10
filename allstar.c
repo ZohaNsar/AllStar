@@ -1,6 +1,3 @@
-#include <stdbool.h>
-#include <unistd.h>
-
 pthread_cond_t cond0 = PTHREAD_COND_INITIALIZER;
 
 WIRE *wire_create(int signal){
