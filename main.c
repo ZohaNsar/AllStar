@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include "allstar.h"
 #include "allstar.c"
 
@@ -22,7 +23,7 @@ int main() {
 //    puts("hihi");
 //    pthread_mutex_unlock(&lock);
 //    puts("hi");
-    WIRE *a = wire_create(HIGH);
+    /*WIRE *a = wire_create(HIGH);
     WIRE *b = wire_create(HIGH);
     WIRE *c = wire_create(HIGH);
     WIRE *d = wire_create(HIGH);
@@ -31,6 +32,9 @@ int main() {
     AND *and0 = and_constructor(3, a, b, c);
     d = and0->out;
     AND *and1 = and_constructor(2, d,e);
-    printf("%d\n", and0->out->signal);
+    printf("%d\n", and0->out->signal);*/
+    WIRE *w = wire_create(LOW);
+    NOT *n = not_create(w);
+    printf("%d\n", n->out->signal);
     return 0;
 }
